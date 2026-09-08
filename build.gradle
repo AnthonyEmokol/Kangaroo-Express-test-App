@@ -1,0 +1,50 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.kangarooexpress.testapp'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.kangarooexpress.testapp'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '1.0-test'
+    }
+
+    signingConfigs {
+        release {
+            def ks = System.getenv('RELEASE_STORE_FILE')
+            def kp = System.getenv('RELEASE_STORE_PASSWORD')
+            def ka = System.getenv('RELEASE_KEY_ALIAS')
+            def kpass = System.getenv('RELEASE_KEY_PASSWORD')
+            if (ks && kp && ka && kpass) {
+                storeFile file(ks)
+                storePassword kp
+                keyAlias ka
+                keyPassword kpass
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            debuggable false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    packaging { resources { excludes += ['/META-INF/{AL2.0,LGPL2.1}'] } }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.webkit:webkit:1.12.1'
+}

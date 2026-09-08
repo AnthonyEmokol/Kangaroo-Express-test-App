@@ -1,0 +1,18 @@
+KANGAROO EXPRESS TEST APP
+==========================
+
+This package contains BOTH Android build configurations:
+
+1. DEBUG — app-debug.apk
+   - Fast friend/testing build
+   - Debuggable
+   - Separate package ID: com.kangarooexpress.testapp.debug
+
+2. RELEASE — app-release.apk
+   - Non-debuggable build
+   - Package ID: com.kangarooexpress.testapp
+   - Must be signed before installation/distribution
+
+The project is ready to open in Android Studio.
+
+IMPORTANT: This ZIP is source/build configuration, not a compiled APK. A computer/cloud Android build environment is required to create the APK binaries.
